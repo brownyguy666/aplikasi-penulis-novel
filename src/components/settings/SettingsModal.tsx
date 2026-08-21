@@ -239,7 +239,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
                     <span>Pilihan Model Gemini</span>
                   </label>
                   <select
-                    value={['auto', 'gemini-3.6-flash', 'gemini-3.7-flash', 'gemini-3.1-pro-preview', 'gemini-flash-latest', 'gemini-pro-latest', 'gemini-2.5-flash', 'gemini-2.5-pro'].includes(selectedModel) ? selectedModel : 'custom'}
+                    value={['auto', 'gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-3.6-flash', 'gemini-3.7-flash', 'gemini-3.1-pro-preview', 'gemini-flash-latest', 'gemini-pro-latest', 'gemini-2.5-pro'].includes(selectedModel) ? selectedModel : 'custom'}
                     onChange={(e) => {
                       if (e.target.value === 'custom') {
                         setSelectedModel('custom');
@@ -249,19 +249,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
                     }}
                     className="w-full px-3 py-2 text-xs rounded-xl bg-(--bg-primary) border border-(--border-color) text-(--text-primary) focus:outline-none font-medium"
                   >
-                    <option value="auto">✨ Auto (Pemilihan Cerdas & Fallback Otomatis)</option>
-                    <optgroup label="Seri Terbaru Gemini 3.x">
-                      <option value="gemini-3.6-flash">Gemini 3.6 Flash (Cepat & Sastrawi - Direkomendasikan)</option>
-                      <option value="gemini-3.7-flash">Gemini 3.7 Flash</option>
-                      <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro (Reasoning & Evaluasi Kritis)</option>
+                    <option value="auto">✨ Auto (Gemini 2.5 Flash - Kuota 1.500 RPD / Bebas Limit)</option>
+                    <optgroup label="⚡ Model Kuota Tinggi (1.500 RPD - Sangat Direkomendasikan)">
+                      <option value="gemini-2.5-flash">Gemini 2.5 Flash (1.500 RPD / Super Cepat)</option>
+                      <option value="gemini-2.0-flash">Gemini 2.0 Flash (1.500 RPD / Responsif)</option>
+                      <option value="gemini-1.5-flash">Gemini 1.5 Flash (1.500 RPD / Stabil)</option>
+                    </optgroup>
+                    <optgroup label="🌟 Model Seri 3.x (Kuota Terbatas ~20-50 RPD)">
+                      <option value="gemini-3.6-flash">Gemini 3.6 Flash (Sastrawi)</option>
+                      <option value="gemini-3.7-flash">Gemini 3.7 Flash (Eksperimental)</option>
+                      <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro (Deep Reasoning)</option>
                     </optgroup>
                     <optgroup label="Auto-Latest Models">
-                      <option value="gemini-flash-latest">Gemini Flash Latest (Selalu Otomatis Versi Terbaru)</option>
+                      <option value="gemini-flash-latest">Gemini Flash Latest</option>
                       <option value="gemini-pro-latest">Gemini Pro Latest</option>
-                    </optgroup>
-                    <optgroup label="Seri Gemini 2.5">
-                      <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
-                      <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
                     </optgroup>
                     <option value="custom">Ketik Model ID Manual...</option>
                   </select>

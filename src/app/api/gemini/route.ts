@@ -3,25 +3,26 @@ import { GoogleGenAI } from '@google/genai';
 
 export const runtime = 'nodejs';
 
-// Ranked fallback chain based on active Gemini API models to guarantee 100% uptime
+// Ranked fallback chain based on active Gemini API models to guarantee 100% uptime and high free quota (1,500 RPD)
 const FALLBACK_MODELS = [
+  'gemini-2.5-flash',
+  'gemini-2.0-flash',
+  'gemini-1.5-flash',
   'gemini-3.6-flash',
-  'gemini-3.7-flash',
   'gemini-flash-latest',
+  'gemini-3.7-flash',
   'gemini-3.1-pro-preview',
   'gemini-pro-latest',
-  'gemini-3.5-flash',
-  'gemini-2.5-flash',
   'gemini-2.5-pro'
 ];
 
 /**
  * Resolve effective model name:
- * If 'auto', pick the top active model.
+ * If 'auto', pick the top high-quota active model (gemini-2.5-flash with 1,500 RPD).
  */
 function resolveModelName(requestedModel?: string): string {
   if (!requestedModel || requestedModel === 'auto') {
-    return 'gemini-3.6-flash';
+    return 'gemini-2.5-flash';
   }
   return requestedModel;
 }
